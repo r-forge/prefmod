@@ -33,7 +33,7 @@ A data frame containing 3584 observations on 10 variables.
 
 \details{
   The data are part of a larger survey conducted in 1999 in 32 countries in
-  Europe (see \url{http://www.europeanvaluesstudy.eu/}). Vermunt (2003)
+  Europe (see \url{https://www.europeanvaluesstudy.eu/}). Vermunt (2003)
   obtained a sample from 10 percent of the available cases per country,
   yielding 3584 valid cases.
 
@@ -62,7 +62,6 @@ A data frame containing 3584 observations on 10 variables.
 
 \source{
   Latent GOLD Sample Data Sets Website.
-  %\url{http://www.statisticalinnovations.com/products/choice_datasets.html}
 }
 
 \references{
