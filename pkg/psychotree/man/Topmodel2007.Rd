@@ -37,10 +37,9 @@ A data frame containing 192 observations on 6 variables.
   age (younger versus older than 30 years) with 48 participants in each group.
 
   Digital photographs (resolution 303 times 404 pixels) of the top six
-  contestants were available from the ProSieben web page
-  (\url{http://www.prosieben.de/}) at the time of the survey. The photos were
-  selected to be comparable, showing the contestant's face and the upper part
-  of the body, all women being casually dressed.
+  contestants were available from the ProSieben web page at the time of the survey.
+  The photos were selected to be comparable, showing the contestant's face and the
+  upper part of the body, all women being casually dressed.
 
   Participants were presented with all 15 pairs of photographs. On each trial,
   their task was to judge which of the two women on the photos was the more
@@ -55,7 +54,7 @@ A data frame containing 192 observations on 6 variables.
 
 \references{
   Wikipedia (2009). Germany's Next Topmodel -- Wikipedia, The Free Encyclopedia.
-  \url{http://en.wikipedia.org/wiki/Germany's_Next_Topmodel}, accessed 2009-02-06.
+  \url{https://en.wikipedia.org/wiki/Germany's_Next_Topmodel}, accessed 2009-02-06.
 }
 
 \seealso{\code{\link{paircomp}}}
