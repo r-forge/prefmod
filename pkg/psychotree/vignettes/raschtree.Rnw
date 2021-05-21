@@ -297,15 +297,15 @@ Finally note that when one joint, unidimensional \rm\ is not appropriate to desc
 \section{Stability Assessment}
 \label{stability}
 
-A tree based on a single sample does not provide any assessment of the confidence we should have in its interpretation (like we are used to, e.g., from confidence intervals for parameter estimates in parametric models). However, a toolkit for assessing the stability of trees based on resampling is now provided by the \pkg{stablelearner} package \citep{PhiZeiStr:2016}.
+A tree based on a single sample does not provide any assessment of the confidence we should have in its interpretation (like we are used to, e.g., from confidence intervals for parameter estimates in parametric models).
+However, a toolkit for assessing the stability of trees based on resampling is now provided by the \pkg{stablelearner} package \citep{PhiZeiStr:2016}.
 
-From version 0.1-2, \pkg{stablelearner} offers 
-descriptive and graphical analyses of the variable and cutpoint selection of trees for psychometric models, including \rt s, fitted via the \pkg{psychotree} package (note that
-this requires version 0.5-2 or higher of the \pkg{psychotools} package, which is used internally for fitting the models).
+From version 0.1-2, \pkg{stablelearner} offers  descriptive and graphical analyses of the variable and cutpoint selection of trees for psychometric models, including \rt s, fitted via the \pkg{psychotree} package
+(note that this requires version 0.6-0 or higher of the \pkg{psychotools} package, which is used internally for fitting the models).
 
-This descriptive and graphical analysis of the variable and cutpoint selection
-can be performed by using the \code{stabletree} function, which repeatedly draws random samples from the
-training data, refits the tree, and displays a summary of the variable and cutpoint selection over the samples. This can give us an intuition of how similar or dissimilar the results would have been for different random samples. 
+This descriptive and graphical analysis of the variable and cutpoint selection can be performed by using the \code{stabletree} function, which repeatedly draws random samples from the training data, refits the tree,
+and displays a summary of the variable and cutpoint selection over the samples.
+This can give us an intuition of how similar or dissimilar the results would have been for different random samples. 
 
 After installing the package before the first usage 
 
@@ -319,18 +319,21 @@ and activating it for the current session
 library("stablelearner")
 @
 
-we can easily assess the stability of \code{my_first_raschtree} by using the
-\code{stabletree} function. 
+we can easily assess the stability of \code{my_first_raschtree} by using the \code{stabletree} function. 
 
-We set a seed for the random number generator to make the analysis based on random draws from the training data reproducible. By default, \code{stabletree} performs subsampling with a fraction of \code{v =
-0.632} and refits 500 trees. Here, we only refit \code{B = 100} trees to save time, but still this computation can take a while.
+We set a seed for the random number generator to make the analysis based on random draws from the training data reproducible.
+By default, \code{stabletree} performs subsampling with a fraction of \code{v = 0.632} and refits 500 trees.
+Here, we only refit \code{B = 100} trees to save time, but still this computation can take a while.
 %
 <<eval=FALSE>>=
 set.seed(4321)
 my_first_raschtree_st <- stabletree(my_first_raschtree, B = 100)
 @
 %
-In case you receive an error message, again this may be due to a too small sample size for fitting the model in certain nodes. Even if in the original tree all nodes were big enough to estimate the model, due to the random sampling in \code{stabletree}, smaller nodes can result in some random samples. In order to prevent this, the minimum node size \code{minsize} needs to be increased already in the \code{raschtree} command (cf.~Section \ref{raschtree}), before applying \code{stabletree}, because the settings of the original \rt\ are passed on to \code{stabletree}.
+In case you receive an error message, again this may be due to a too small sample size for fitting the model in certain nodes.
+Even if in the original tree all nodes were big enough to estimate the model, due to the random sampling in \code{stabletree}, smaller nodes can result in some random samples.
+In order to prevent this, the minimum node size \code{minsize} needs to be increased already in the \code{raschtree} command (cf.~Section \ref{raschtree}), before applying \code{stabletree},
+because the settings of the original \rt\ are passed on to \code{stabletree}.
 
 <<stabletree_fit, echo=FALSE>>=
 if(!file.exists("my_first_raschtree_st.Rdata")){
@@ -342,19 +345,18 @@ load("my_first_raschtree_st.Rdata")
 }
 @
 %
-The function \code{stabletree} returns an object of class \code{stabletree}, for which a
-\code{summary} method and several \code{plot} methods exist:
+The function \code{stabletree} returns an object of class \code{stabletree}, for which a \code{summary} method and several \code{plot} methods exist:
 %
 <<stabletree_summary>>=
 summary(my_first_raschtree_st)
 @
 %
-The summary prints the relative variable selection frequencies (\code{freq}) as well as
-the average number of splits in each variable (\code{mean}) over all 100 trees. A relative variable selection frequency of one means that a variable was selected in each of the 100 trees. The average number of splits can show values greater than one if the same variable is used more than once in the same tree. 
-The asterisk columns indicate whether this variable was selected in
-the original tree, and how often.
-For example, the variable \code{gender} was selected as a splitting variable once in every
-tree, including the original tree. The variable \code{spon}, on the other had, was selected in 60\% of the trees, also in the orignal tree, on average 0.77 times, but twice in the original tree. 
+The summary prints the relative variable selection frequencies (\code{freq}) as well as the average number of splits in each variable (\code{mean}) over all 100 trees.
+A relative variable selection frequency of one means that a variable was selected in each of the 100 trees.
+The average number of splits can show values greater than one if the same variable is used more than once in the same tree. 
+The asterisk columns indicate whether this variable was selected in the original tree, and how often.
+For example, the variable \code{gender} was selected as a splitting variable once in every tree, including the original tree.
+The variable \code{spon}, on the other had, was selected in 60\% of the trees, also in the orignal tree, on average 0.77 times, but twice in the original tree. 
 
 By using \code{barplot}, we can also visualize the variable selection frequencies:
 %
@@ -365,10 +367,10 @@ barplot(my_first_raschtree_st)
 @
 \end{center}
 %
-Here the variables that were included in the original tree are marked by darker shading and underlined variable names. We see again that most trees agreed on the two most relevant splitting variables, \code{gender} and \code{spon}.
+Here the variables that were included in the original tree are marked by darker shading and underlined variable names.
+We see again that most trees agreed on the two most relevant splitting variables, \code{gender} and \code{spon}.
 
-The additional function \code{image} allows for a more detailed visualization of the variable selection
-patterns, that are displayed as one row on the y-axis for each of the 100 trees:
+The additional function \code{image} allows for a more detailed visualization of the variable selection patterns, that are displayed as one row on the y-axis for each of the 100 trees:
 %
 \setkeys{Gin}{width=.5\textwidth}
 \begin{center}
@@ -377,10 +379,12 @@ image(my_first_raschtree_st)
 @
 \end{center}
 
-We observe again that the largest group of around 50 of the 100 trees have selected the same combination of variables, \code{gender} and \code{spon}, that was also selected in the original tree. This combination of variables selected by the original tree is framed in red. Other combinations that were selected by larger groups of trees were, e.g., \code{gender} alone, \code{gender} and \code{semester}, \code{gender}, \code{spon} and \code{age} as well as \code{gender}, \code{spon} and \code{semester}.
+We observe again that the largest group of around 50 of the 100 trees have selected the same combination of variables, \code{gender} and \code{spon}, that was also selected in the original tree.
+This combination of variables selected by the original tree is framed in red. Other combinations that were selected by larger groups of trees were, e.g., \code{gender} alone, \code{gender} and
+\code{semester}, \code{gender}, \code{spon} and \code{age} as well as \code{gender}, \code{spon} and \code{semester}.
 
-Finally, the \code{plot} function allows us to inspect the cutpoints and resulting
-partitions for each variable over all 100 trees, with the variables included in the original tree again marked by underlined variable names and the cutpoints from the original trees indicated in red:
+Finally, the \code{plot} function allows us to inspect the cutpoints and resulting partitions for each variable over all 100 trees,
+with the variables included in the original tree again marked by underlined variable names and the cutpoints from the original trees indicated in red:
 %
 \setkeys{Gin}{width=\textwidth}
 \begin{center}
@@ -389,27 +393,25 @@ plot(my_first_raschtree_st)
 @
 \end{center}
 %
-Regarding the variable \code{gender}, that is binarily coded here, there is only one possible cutpoint, which is used whenever the variable is used for splitting (including the first split in the original tree, as indicated in red). Looking at the ordered factor \code{spon}, we observe that a
-cutpoint between \code{2-3/week} and \code{4-5/week} occurred most frequently, followed by the neighboring
-cutpoint between \code{1/week} and \code{2-3/week}. These two cutpoints
-were also chosen in the original tree (as indicated by the red vertical lines; the number two indicates that this variable was used for the second split in each branch of the tree, cf.~the illustration of the original tree on p.~\pageref{raschtree:fig}).
-Other cutpoints only occurred very rarely. Finally, regarding the other
-variables \code{semester}, \code{age}, and \code{elite} (which were not
-selected in the original tree), we observe cutpoints between \code{5} and \code{8} for the variable \code{semester}, quite heterogenous cutpoints for the variable \code{age}, and the only possible cutpoint for the binary variable \code{elite}, that is used only in very few trees, as we saw above. 
+Regarding the variable \code{gender}, that is binarily coded here, there is only one possible cutpoint,
+which is used whenever the variable is used for splitting (including the first split in the original tree, as indicated in red).
+Looking at the ordered factor \code{spon}, we observe that a cutpoint between \code{2-3/week} and \code{4-5/week} occurred most frequently,
+followed by the neighboring cutpoint between \code{1/week} and \code{2-3/week}.
+These two cutpoints were also chosen in the original tree (as indicated by the red vertical lines;
+the number two indicates that this variable was used for the second split in each branch of the tree, cf.~the illustration of the original tree on p.~\pageref{raschtree:fig}).
+Other cutpoints only occurred very rarely. Finally, regarding the other variables \code{semester}, \code{age}, and \code{elite} (which were not selected in the original tree),
+we observe cutpoints between \code{5} and \code{8} for the variable \code{semester}, quite heterogenous cutpoints for the variable \code{age},
+and the only possible cutpoint for the binary variable \code{elite}, that is used only in very few trees, as we saw above. 
 
-To conclude, the summary table and plots can help us gain some
-insight into the stability of our original \rt\ by means of a resampling approach. Here, the \dif\ effects of
-\code{gender} and \code{spon} appear to be quite stable.
-
+To conclude, the summary table and plots can help us gain some insight into the stability of our original \rt\ by means of a resampling approach.
+Here, the \dif\ effects of \code{gender} and \code{spon} appear to be quite stable.
 
 \section*{Acknowledgements}
 The work of Carolin Strobl was supported by grant STR1142/1-1 (``Methods to Account for Subject-Co\-vari\-ates
 in IRT-Models'') from the German Research Foundation (DFG). 
 The work of Lennart Schneider was supported in part by grant 100019\_152548
-(``Detecting Heterogeneity in Complex IRT Models for Measuring Latent Traits'')
-from the Swiss National Science Foundation (SNF).
-The authors would like to thank the late Reinhold Hatzinger for important
-insights stimulated by conversations and the \proglang{R}~package \pkg{eRm} 
+(``Detecting Heterogeneity in Complex IRT Models for Measuring Latent Traits'') from the Swiss National Science Foundation (SNF).
+The authors would like to thank the late Reinhold Hatzinger for important insights stimulated by conversations and the \proglang{R}~package \pkg{eRm} 
 \citep{MaiHat:2007,eRm:pkg}. 
 
 
