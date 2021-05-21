@@ -1,4 +1,6 @@
 
+> options(prompt = "R> ", continue = "+  ")
+
 > library("psychotree")
 Loading required package: partykit
 Loading required package: grid
@@ -58,8 +60,8 @@ Loading required package: psychotools
 
 > if (!file.exists("my_first_raschtree_st.Rdata")) {
 +     set.seed(4321)
-+     my_first_raschtree_st <- stabletree(my_first_raschtree, B = 100)
-+     .... [TRUNCATED] 
++     my_first_raschtree_st <- stabletree(my_first_raschtree, B = 50)
++      .... [TRUNCATED] 
 
 > summary(my_first_raschtree_st)
 
@@ -68,16 +70,16 @@ raschtree(formula = spisa ~ age + gender + semester + elite +
     spon, data = SPISA, minsize = 30)
 
 Sampler:
-B = 100 
+B = 50 
 Method = Subsampling with 63.2% data
 
 Variable selection overview:
 
          freq * mean *
 gender   1.00 1 1.00 1
-spon     0.60 1 0.77 2
-semester 0.14 0 0.15 0
-age      0.08 0 0.09 0
+spon     0.60 1 0.82 2
+semester 0.18 0 0.18 0
+age      0.04 0 0.04 0
 elite    0.02 0 0.02 0
 (* = original tree)
 
@@ -90,4 +92,4 @@ elite    0.02 0 0.02 0
  *** Run successfully completed ***
 > proc.time()
    user  system elapsed 
-142.454   0.608 136.276 
+ 55.873   0.227  56.103 
