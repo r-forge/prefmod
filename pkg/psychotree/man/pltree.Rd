@@ -117,6 +117,7 @@ to IRT models implemented in \code{\link[psychotools]{raschmodel}}, \code{\link[
 Various methods are provided for \code{"pltree"} objects, most of them inherit their behavior from \code{"modelparty"} objects (e.g., \code{print}, \code{summary}).
 }
 \examples{
+\dontrun{
 #fit a rasch tree on spisa dataset
 library(psychotree)
 data("SPISA")
@@ -131,4 +132,5 @@ plot(fit_rasch)
 
 #compute summaries of the models fitted in nodes 1 and 2
 summary(fit_rasch, 1:2)
+}
 }

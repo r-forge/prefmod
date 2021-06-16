@@ -34,6 +34,7 @@
 #' Various methods are provided for \code{"pltree"} objects, most of them inherit their behavior from \code{"modelparty"} objects (e.g., \code{print}, \code{summary}).
 #'
 #' @examples
+#' \dontrun{
 #' #fit a rasch tree on spisa dataset
 #' library(psychotree)
 #' data("SPISA")
@@ -48,6 +49,7 @@
 #'
 #' #compute summaries of the models fitted in nodes 1 and 2
 #' summary(fit_rasch, 1:2)
+#' }
 pltree <- function(formula, data, itemtype=c("Rasch", "1PL", "2PL", "3PL", "3PLu", "4PL"),
                    start = NULL, weights = NULL, estfun = FALSE, object = FALSE,
                    grouppars = FALSE, vcov = TRUE, method = "BFGS", maxit = 500L, reltol = 1e-10,
