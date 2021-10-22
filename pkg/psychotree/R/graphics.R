@@ -1,38 +1,4 @@
 ## profile plot visualization function
-
-#' Panel-Generating Function for Visualizing IRT Tree Models
-#'
-#' @param mobobj an object of class \code{"pltree"} or class \code{"mob"}
-#' fitted by \code{\link[psychotree]{pltree}}
-#' @param what specifying the type of parameters to be plotted
-#' @param parg supplementary arguments for \code{"what"}
-#' @param id logical. Should the node ID be displayed?
-#' @param names logical or character. If \code{TRUE}, the names of
-#' the items are displayed on the x-axis. If \code{FALSE}, numbers of
-#' items are shown. Alternatively a character vector of the same
-#' length as the number of items can be supplied.
-#' @param abbreviate logical. Should item names be abbreviated?
-#' If numeric this controls the length of the abbreviation.
-#' @param index logical. Should different indexes for different items be used?
-#' @param ref logical. Should a horizontal line for the reference level be drawn?
-#' @param col,border,pch,cex graphical appearance of plotting symbols.
-#' @param linecol,refcol character, specifying the line color to use for the
-#' profile lines and reference line, respectively.
-#' @param bg color for background filling.
-#' @param xscale,yscale x and y axis limits.
-#' @param ylines numeric. Number of lines used for y-axis labels.
-#' @param ... further arguments currently not used.
-#'
-#' @return A panel function which can be supplied to the \code{plot} method for \code{"pltree"} objects
-#'  or \code{"mob"} objects fitted by \code{\link[psychotree]{pltree}} or \code{\link[psychotree]{gpcmtree}}.
-#' @export
-#'
-#' @details The panel-generating function \code{node_regionplot} is called by the \code{plot}
-#' method of \code{"gpcmtree"} object by default and does not have to be called by the user directly.
-#' See \code{\link[psychotools]{regionplot}} for details and references
-#' of the drawn region plots and possible values and their meaning for
-#' the argument \code{type} (taken by \code{node_regionplot}).
-#'
 node_profileplot <- function(mobobj, what = c("all", "items", "thresholds", "discriminations", "guessings", "uppers"),
                              parg = list(type = NULL, ref = NULL, alias = TRUE, logit = FALSE), id = TRUE, names = FALSE,
                              abbreviate = TRUE, index = TRUE, ref = TRUE, col = "black", border = col,
@@ -182,45 +148,6 @@ node_profileplot <- function(mobobj, what = c("all", "items", "thresholds", "dis
 }
 class(node_profileplot) <- "grapcon_generator"
 
-
-
-
-## region plot visualization function
-#' Panel-Generating Function for Visualizing IRT Tree Models
-#'
-#' @param mobobj an object of class \code{"pltree"} or class \code{"mob"}
-#' fitted by \code{\link[psychotree]{pltree}}
-#' @param names logical or character. If \code{TRUE}, the names of the items are displayed
-#' on the x-axis. If \code{FALSE}, numbers of items are shown.
-#' Alternatively a character vector of the same length as the number of items can be supplied.
-#' @param abbreviate logical. Should item names be abbreviated?
-#' If numeric this controls the length of the abbreviation.
-#' @param type character, specifying which type of threshold parameters
-#' are to be used to mark the category regions per item in the plot
-#' (see \code{\link[psychotools]{regionplot}} for details).
-#' @param ref a vector of labels or position indices of item parameters
-#' which should be used as restriction/for normalization.
-#' If \code{NULL} (the default), all items are used (sum zero restriction).
-#'  See \code{\link[psychotools]{threshpar}} for more details.
-#' @param ylim y axis limits
-#' @param off numeric, the distance (in scale units) between two item rectangles.
-#' @param col_fun function. Function to use for creating the color
-#' palettes for the rectangles. Per default \code{gray.colors} is
-#' used. Be aware that \code{col_fun} should accept as first argument an
-#' integer specifying the number of colors to create.
-#' @param bg color for background filling.
-#' @param uo_show logical. If set to \code{TRUE} (the default),
-#' disordered absolute item threshold parameters are indicated by a
-#' horizontal line (only if \code{type} is set to \code{"mode"}).
-#' @param uo_col character, color of indication lines (if \code{uo_show}).
-#' @param uo_lty numeric. Line typ of indication lines (if \code{uo_show}).
-#' @param uo_lwd numeric. Line width of indication lines (if \code{uo_show}).
-#' @param ylines numeric. Number of lines used for y-axis labels.
-#'
-#' @return A panel function which can be supplied to the \code{plot} method for \code{"pltree"} objects
-#'  or \code{"mob"} objects fitted by \code{\link[psychotree]{pltree}}.
-#' @export
-#'
 node_regionplot <- function(mobobj, names = FALSE, abbreviate = TRUE, type = c("mode", "median", "mean"),
                             ref = NULL, ylim = NULL, off = 0.1, col_fun = gray.colors, bg = "white",
                             uo_show = TRUE, uo_col = "red", uo_lty = 2, uo_lwd = 1.25, ylines = 2)
