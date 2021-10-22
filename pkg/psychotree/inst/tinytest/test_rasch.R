@@ -2,7 +2,7 @@
 
 ## load data and fit model ##
 data("SPISA", package = "psychotree")
-fit_rasch <- pltree(spisa ~ age + gender + semester + elite + spon, data = SPISA, itemtype = "Rasch")
+fit_rasch <- pltree(spisa ~ age + gender + semester + elite + spon, data = SPISA, type = "Rasch")
 # saveRDS(fit_rasch, "inst/tinytest/fit_rasch.RDS") #dont run
 # dont run, creation of smaller test:
 # test_rasch <- list()
@@ -18,7 +18,7 @@ fit_rasch <- pltree(spisa ~ age + gender + semester + elite + spon, data = SPISA
 # expect_equal_to_reference(fit_rasch, "fit_rasch.RDS")
 
 ## check that a warning is emitted if I try to supply an impact factor, but I am doing CML
-expect_warning(pltree(spisa ~ age + gender + semester + elite + spon | gender, data = SPISA, itemtype = "Rasch"))
+expect_warning(pltree(spisa ~ age + gender + semester + elite + spon | gender, data = SPISA, type = "Rasch"))
 
 ## test methods
 expect_equal(coef(fit_rasch), readRDS("test_rasch.RDS")[[1]],
