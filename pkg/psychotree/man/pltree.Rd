@@ -1,6 +1,6 @@
 \name{pltree}
-
 \alias{pltree}
+
 \alias{print.pltree}
 \alias{plot.pltree}
 \alias{itempar.pltree}
@@ -10,44 +10,32 @@
 
 \title{Main function to run tree based DIF global testing for PL models.}
 
-\usage{
-pltree(
-  formula,
-  data,
-  type = c("Rasch", "1PL", "2PL", "3PL", "3PLu", "4PL"),
-  start = NULL,
-  weights = NULL,
-  grouppars = FALSE,
-  vcov = TRUE,
-  method = "BFGS",
-  maxit = 500L,
-  reltol = 1e-10,
-  deriv = "sum",
-  hessian = TRUE,
-  full = TRUE,
-  minsize = NULL,
-  ...
-)
+\description{
+  Recursive partitioning (also known as trees) based on PL models.
+}
 
-\method{print}{pltree}(x, ...)
+\usage{
+pltree(formula, data, type = c("Rasch", "1PL", "2PL", "3PL", "3PLu", "4PL"),
+  start = NULL, weights = NULL, grouppars = FALSE,
+  vcov = TRUE, method = "BFGS", maxit = 500L,
+  reltol = 1e-10, deriv = "sum", hessian = TRUE,
+  full = TRUE, minsize = NULL, \dots)
+
+\method{print}{pltree}(x, \dots)
 
 \method{plot}{pltree}(
-  x,
-  type = c("profile", "regions"),
-  terminal_panel = NULL,
-  tp_args = list(...),
-  tnex = 2L,
-  drop_terminal = TRUE,
-  ...
+  x, type = c("profile", "regions"), terminal_panel = NULL,
+  tp_args = list(...), tnex = 2L, drop_terminal = TRUE,
+  \dots
 )
 
-\method{itempar}{pltree}(object, node = NULL, ...)
+\method{itempar}{pltree}(object, node = NULL, \dots)
 
-\method{threshpar}{pltree}(object, node = NULL, ...)
+\method{threshpar}{pltree}(object, node = NULL, \dots)
 
-\method{guesspar}{pltree}(object, node = NULL, ...)
+\method{guesspar}{pltree}(object, node = NULL, \dots)
 
-\method{upperpar}{pltree}(object, node = NULL, ...)
+\method{upperpar}{pltree}(object, node = NULL, \dots)
 }
 
 \arguments{
@@ -60,21 +48,21 @@ parameter distribution will be estimated for each level in \code{g}.}
 
 \item{data}{a data frame containing the variables in the model.}
 
-\item{type}{character, specifying the type of parametric logistic IRT model to be estimated (in pltree; see \code{\link[psychotools]{plmodel}}) or character string specifying the type of plot (in plot)}
+\item{type}{character, specifying either the type of IRT model in \code{pltree} (see also \code{\link[psychotools]{plmodel}}) or the type of visualization to be used in the \code{plot} method.}
 
 \item{start}{an optional vector or list of starting values (see \code{\link[psychotools]{raschmodel}} or \code{\link[psychotools]{plmodel}}).}
 
 \item{weights}{an optional vector of weights (interpreted as case weights).}
 
-\item{grouppars}{logical. Should the estimated distributional group parameters of a multiple group model be included in the model parameters? see (see \code{\link[psychotools]{plmodel}}).}
+\item{grouppars}{logical. Should the estimated distributional group parameters of a multiple group model be included in the model parameters? (see \code{\link[psychotools]{plmodel}}).}
 
 \item{vcov}{logical or character specifying the type of variance-covariance matrix (if any) computed for the final models when fitted using MML (see \code{\link[psychotools]{plmodel}}).}
 
-\item{method}{control parameter for the optimizer employed by \code{\link[mirt]{mirt}} for the EM algorithm when models are fitted using MML (see \code{\link[psychotools]{plmodel}}).}
+\item{method}{control parameter for the optimizer used by \code{\link[mirt]{mirt}} for the EM algorithm when models are fitted using MML (see \code{\link[psychotools]{plmodel}}).}
 
-\item{maxit}{control parameter for the optimizer employed by (see \code{\link[psychotools]{raschmodel}}, \code{\link[psychotools]{plmodel}})}
+\item{maxit}{control parameter for the optimizer used by \code{\link[psychotools]{raschmodel}} or \code{\link[psychotools]{plmodel}} (see \code{\link[psychotools]{raschmodel}}, \code{\link[psychotools]{plmodel}})}
 
-\item{reltol}{control parameter for the optimizer employed by (see \code{\link[psychotools]{raschmodel}}, \code{\link[psychotools]{plmodel}})}
+\item{reltol}{control parameter for the optimizer used by \code{\link[psychotools]{raschmodel}} or \code{\link[psychotools]{plmodel}} (see \code{\link[psychotools]{raschmodel}}, \code{\link[psychotools]{plmodel}})}
 
 \item{deriv}{character. Which type of derivatives should be used for computing gradient and Hessian matrix when fitting Rasch models  with the CML method (see \code{\link[psychotools]{raschmodel}})?}
 
@@ -95,20 +83,19 @@ parameter distribution will be estimated for each level in \code{g}.}
 \item{node}{numeric vector specifying for which node(s) to compute a summary (defaults to all leaves of the tree).}
 }
 
-\value{
-An object of S3 class \code{"pltree"} inheriting from class \code{"modelparty"}.
-}
-
-\description{
-Main function to run tree based DIF global testing for PL models.
-}
-
 \details{
-pltree implements an application of model-based recursive partitioning (implemented in \code{\link[partykit]{mob}})
+\code{pltree} implements an application of model-based recursive partitioning (implemented in \code{\link[partykit]{mob}})
 to IRT models implemented in \code{\link[psychotools]{raschmodel}}, \code{\link[psychotools]{plmodel}}.
 
 Various methods are provided for \code{"pltree"} objects, most of them inherit their behavior from \code{"modelparty"} objects (e.g., \code{print}, \code{summary}).
 }
+
+\value{
+An object of S3 class \code{"pltree"} inheriting from class \code{"modelparty"}.
+}
+
+\seealso{\code{\link[partykit]{mob}}, \code{\link[psychotools]{plmodel}},
+  \code{\link{rstree}}, \code{\link{pctree}}, \code{\link{raschtree}}, \code{\link{gpcmtree}}}
 
 \examples{
 #fit a Rasch tree on the SPISA data set

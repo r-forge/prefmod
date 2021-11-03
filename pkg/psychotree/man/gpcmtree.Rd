@@ -8,43 +8,32 @@
 \alias{guesspar.gpcmtree}
 \alias{upperpar.gpcmtree}
 
-\title{Main function to run tree based DIF global testing for GPCM models}
+\title{Main function to run tree based DIF global testing for generalized partial credit models}
+
+\description{
+   Recursive partitioning (also known as trees) based on generalized partial credit models.
+}
 
 \usage{
-gpcmtree(
-  formula,
-  data,
-  weights = NULL,
-  grouppars = FALSE,
-  vcov = TRUE,
-  nullcats = "downcode",
-  start = NULL,
-  method = "BFGS",
-  maxit = 500L,
-  reltol = 1e-10,
-  minsize = 500,
-  ...
-)
+gpcmtree(formula, data, weights = NULL,
+  grouppars = FALSE, vcov = TRUE, nullcats = "downcode",
+  start = NULL, method = "BFGS", maxit = 500L,
+  reltol = 1e-10, minsize = 500, \dots)
 
 \method{print}{gpcmtree}(x, title = "PL Tree", objfun = "negative log-likelihood", ...)
 
-\method{plot}{gpcmtree}(
-  x,
-  type = c("regions", "profile"),
-  terminal_panel = NULL,
-  tp_args = list(...),
-  tnex = 2L,
-  drop_terminal = TRUE,
-  ...
+\method{plot}{gpcmtree}(x, type = c("regions", "profile"), terminal_panel = NULL,
+  tp_args = list(...), tnex = 2L, drop_terminal = TRUE,
+  \dots
 )
 
-\method{itempar}{gpcmtree}(object, node = NULL, ...)
+\method{itempar}{gpcmtree}(object, node = NULL, \dots)
 
-\method{threshpar}{gpcmtree}(object, node = NULL, ...)
+\method{threshpar}{gpcmtree}(object, node = NULL, \dots)
 
-\method{guesspar}{gpcmtree}(object, node = NULL, ...)
+\method{guesspar}{gpcmtree}(object, node = NULL, \dots)
 
-\method{upperpar}{gpcmtree}(object, node = NULL, ...)
+\method{upperpar}{gpcmtree}(object, node = NULL, \dots)
 }
 
 \arguments{
@@ -90,15 +79,17 @@ parameter distribution will be estimated for each level in \code{g}.}
 \item{node}{numeric vector specifying for which node(s) to compute a summary (defaults to all leaves of the tree).}
 }
 
-\value{
-An object of S3 class \code{"gpcmtree"} inheriting from class \code{"modelparty"}.
-}
-\description{
-Main function to run tree based DIF global testing for GPCM models
-}
+
 \details{
-gpcmtree implements an application of model-based recursive partitioning (implemented in \code{\link[partykit]{mob}})
+\code{gpcmtree} implements an application of model-based recursive partitioning (implemented in \code{\link[partykit]{mob}})
 to GPCM models implemented in \code{\link[psychotools]{gpcmodel}}.
 
 Various methods are provided for \code{"gpcmtree"} objects, most of them inherit their behavior from \code{"modelparty"} objects (e.g., \code{print}, \code{summary}).
 }
+
+\value{
+An object of S3 class \code{"gpcmtree"} inheriting from class \code{"modelparty"}.
+}
+
+\seealso{\code{\link[partykit]{mob}}, \code{\link[psychotools]{plmodel}},
+  \code{\link{rstree}}, \code{\link{pctree}}, \code{\link{raschtree}}, \code{\link{pltree}}}
