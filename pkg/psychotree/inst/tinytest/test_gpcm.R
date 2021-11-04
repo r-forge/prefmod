@@ -23,56 +23,36 @@
 # })
 # dat_sim1 <- Reduce(function(...) rbind(...), dat_sim1)
 # dataset1$response <- dat_sim1
-# saveRDS(dataset1, "fit_GPCM_dataset.RDS")
+# saveRDS(dataset1, "fit_GPCM_dataset.rds")
 
 ## load data and fit model ##
-simdata <- readRDS("fit_GPCM_dataset.RDS")
+simdata <- readRDS("fit_GPCM_dataset.rds")
 fit_GPCM <- gpcmtree(response ~. , data=simdata)
-# saveRDS(fit_GPCM, "fit_GPCM.RDS") #dont run
-
-# dont run, creation of smaller tests:
-# test_GPCM <- list()
-# test_GPCM[[1]] <- coef(fit_GPCM)
-# test_GPCM[[2]] <- itempar(fit_GPCM)
-# test_GPCM[[3]] <- threshpar(fit_GPCM)
-# test_GPCM[[4]] <- guesspar(fit_GPCM)
-# test_GPCM[[5]] <- upperpar(fit_GPCM)
-# saveRDS(test_GPCM, "inst/tinytest/test_GPCM.RDS")
 
 ## test methods
-expect_equal(coef(fit_GPCM), readRDS("test_GPCM.RDS")[[1]],
+expect_equal(coef(fit_GPCM), readRDS("test_GPCM.rds")[[1]],
              tolerance = 0.0001)
-expect_equal(itempar(fit_GPCM), readRDS("test_GPCM.RDS")[[2]],
+expect_equal(itempar(fit_GPCM), readRDS("test_GPCM.rds")[[2]],
              tolerance = 0.0001)
-expect_equal(threshpar(fit_GPCM), readRDS("test_GPCM.RDS")[[3]],
+expect_equal(threshpar(fit_GPCM), readRDS("test_GPCM.rds")[[3]],
              tolerance = 0.0001)
-expect_equal(guesspar(fit_GPCM), readRDS("test_GPCM.RDS")[[4]],
+expect_equal(guesspar(fit_GPCM), readRDS("test_GPCM.rds")[[4]],
              tolerance = 0.0001)
-expect_equal(upperpar(fit_GPCM), readRDS("test_GPCM.RDS")[[5]],
+expect_equal(upperpar(fit_GPCM), readRDS("test_GPCM.rds")[[5]],
              tolerance = 0.0001)
 
-### Check pltree with GPCM model and an impact factor on the simulated dataset ###
-
+### Check pltree with GPCM and an impact factor on the simulated dataset ###
 ## fit model ##
 fit_GPCM_mg <- gpcmtree(response ~ fac1 | . , data=simdata)
-# saveRDS(fit_GPCM_mg, "fit_GPCM_mg.RDS") #dont run
-# dont run, creation of smaller tests:
-# test_GPCM_mg <- list()
-# test_GPCM_mg[[1]] <- coef(fit_GPCM_mg)
-# test_GPCM_mg[[2]] <- itempar(fit_GPCM_mg)
-# test_GPCM_mg[[3]] <- threshpar(fit_GPCM_mg)
-# test_GPCM_mg[[4]] <- guesspar(fit_GPCM_mg)
-# test_GPCM_mg[[5]] <- upperpar(fit_GPCM_mg)
-# saveRDS(test_GPCM_mg, "inst/tinytest/test_GPCM_mg.RDS")
 
 ## test methods
-expect_equal(coef(fit_GPCM_mg), readRDS("test_GPCM_mg.RDS")[[1]],
+expect_equal(coef(fit_GPCM_mg), readRDS("test_GPCM_mg.rds")[[1]],
              tolerance = 0.0001)
-expect_equal(itempar(fit_GPCM_mg), readRDS("test_GPCM_mg.RDS")[[2]],
+expect_equal(itempar(fit_GPCM_mg), readRDS("test_GPCM_mg.rds")[[2]],
              tolerance = 0.0001)
-expect_equal(threshpar(fit_GPCM_mg), readRDS("test_GPCM_mg.RDS")[[3]],
+expect_equal(threshpar(fit_GPCM_mg), readRDS("test_GPCM_mg.rds")[[3]],
              tolerance = 0.0001)
-expect_equal(guesspar(fit_GPCM_mg), readRDS("test_GPCM_mg.RDS")[[4]],
+expect_equal(guesspar(fit_GPCM_mg), readRDS("test_GPCM_mg.rds")[[4]],
              tolerance = 0.0001)
-expect_equal(upperpar(fit_GPCM_mg), readRDS("test_GPCM_mg.RDS")[[5]],
+expect_equal(upperpar(fit_GPCM_mg), readRDS("test_GPCM_mg.rds")[[5]],
              tolerance = 0.0001)

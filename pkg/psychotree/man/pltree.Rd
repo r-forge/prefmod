@@ -101,7 +101,7 @@ An object of S3 class \code{"pltree"} inheriting from class \code{"modelparty"}.
 #fit a Rasch tree on the SPISA data set
 library(psychotree)
 data("SPISA")
-fit_rasch <- pltree(spisa ~ age + gender + semester + elite + spon, 
+fit_rasch <- pltree(spisa[,1:9] ~ age + gender + semester + elite + spon, 
                     data = SPISA, type = "Rasch")
 
 #print the Rasch tree

@@ -71,7 +71,6 @@ S3method("threshpar", "pltree")
 S3method("guesspar", "pltree")
 S3method("upperpar", "pltree")
 
-
 ## methods for gpcmtree objects
 S3method("plot", "gpcmtree")
 S3method("print", "gpcmtree")
