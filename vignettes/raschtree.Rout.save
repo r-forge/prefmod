@@ -1,0 +1,95 @@
+
+> options(prompt = "R> ", continue = "+  ")
+
+> library("psychotree")
+Loading required package: partykit
+Loading required package: grid
+Loading required package: libcoin
+Loading required package: mvtnorm
+Loading required package: psychotools
+
+> data("SPISA", package = "psychotree")
+
+> if (file.exists("raschtree-spisa.rda")) load("raschtree-spisa.rda") else {
++     my_first_raschtree <- raschtree(spisa ~ age + gender + semester + 
+ .... [TRUNCATED] 
+
+> file.remove("raschtree-spisa.rda")
+[1] TRUE
+
+> plot(my_first_raschtree)
+
+> plot(my_first_raschtree, col = rep(palette.colors(5), 
++     each = 9))
+
+> coef(my_first_raschtree, node = 4)
+    spisa2     spisa3     spisa4     spisa5     spisa6     spisa7     spisa8 
+-0.9187137 -1.2874521 -2.6805353 -1.8312493 -1.9026320 -2.4951461 -0.4162699 
+    spisa9    spisa10    spisa11    spisa12    spisa13    spisa14    spisa15 
+-0.2581010 -2.7296693 -1.1543021 -4.1769262 -1.0539421  0.7916895 -2.3241647 
+   spisa16    spisa17    spisa18    spisa19    spisa20    spisa21    spisa22 
+-2.0495272 -0.8845425 -1.4541652  1.0321505 -0.9187137 -1.2208998 -2.2428880 
+   spisa23    spisa24    spisa25    spisa26    spisa27    spisa28    spisa29 
+-1.3540086 -2.7296693 -0.7458437 -1.2208998 -2.9403761 -2.1253688 -0.7458437 
+   spisa30    spisa31    spisa32    spisa33    spisa34    spisa35    spisa36 
+-0.9865644 -1.4541652 -0.4922363 -3.8232693 -2.1640318 -3.2469996 -2.9403761 
+   spisa37    spisa38    spisa39    spisa40    spisa41    spisa42    spisa43 
+-2.9972355 -1.9026320 -0.8845425 -3.8232693 -1.0539421 -2.7296693 -3.2469996 
+   spisa44    spisa45 
+-1.5213581 -3.6324888 
+
+> itempar(my_first_raschtree, node = 4)
+     spisa1      spisa2      spisa3      spisa4      spisa5      spisa6 
+ 1.75417311  0.83545944  0.46672105 -0.92636220 -0.07707618 -0.14845889 
+     spisa7      spisa8      spisa9     spisa10     spisa11     spisa12 
+-0.74097296  1.33790319  1.49607208 -0.97549614  0.59987100 -2.42275309 
+    spisa13     spisa14     spisa15     spisa16     spisa17     spisa18 
+ 0.70023103  2.54586259 -0.56999156 -0.29535409  0.86963065  0.30000788 
+    spisa19     spisa20     spisa21     spisa22     spisa23     spisa24 
+ 2.78632359  0.83545944  0.53327329 -0.48871486  0.40016448 -0.97549614 
+    spisa25     spisa26     spisa27     spisa28     spisa29     spisa30 
+ 1.00832941  0.53327329 -1.18620295 -0.37119569  1.00832941  0.76760868 
+    spisa31     spisa32     spisa33     spisa34     spisa35     spisa36 
+ 0.30000788  1.26193682 -2.06909621 -0.40985866 -1.49282653 -1.18620295 
+    spisa37     spisa38     spisa39     spisa40     spisa41     spisa42 
+-1.24306243 -0.14845889  0.86963065 -2.06909621  0.70023103 -0.97549614 
+    spisa43     spisa44     spisa45 
+-1.49282653  0.23281497 -1.87831571 
+
+> library("stablelearner")
+
+> if (!file.exists("my_first_raschtree_st.Rdata")) {
++     set.seed(4321)
++     my_first_raschtree_st <- stabletree(my_first_raschtree, B = 50)
++      .... [TRUNCATED] 
+
+> summary(my_first_raschtree_st)
+
+Call:
+raschtree(formula = spisa ~ age + gender + semester + elite + 
+    spon, data = SPISA, minsize = 30)
+
+Sampler:
+B = 50 
+Method = Subsampling with 63.2% data
+
+Variable selection overview:
+
+         freq * mean *
+gender   1.00 1 1.00 1
+spon     0.60 1 0.82 2
+semester 0.18 0 0.18 0
+age      0.04 0 0.04 0
+elite    0.02 0 0.02 0
+(* = original tree)
+
+> barplot(my_first_raschtree_st)
+
+> image(my_first_raschtree_st)
+
+> plot(my_first_raschtree_st)
+
+ *** Run successfully completed ***
+> proc.time()
+   user  system elapsed 
+ 55.873   0.227  56.103 
