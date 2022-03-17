@@ -301,6 +301,12 @@ Finally note that when one joint, unidimensional \rm\ is not appropriate to desc
 \section{Stability assessment}
 \label{stability}
 
+<<echo=FALSE, results=hide>>=
+avail <- require("stablelearner", quietly = TRUE)
+@
+
+\SweaveOpts{eval = \Sexpr{avail}}
+
 A tree based on a single sample does not provide any assessment of the confidence we should have in its interpretation -- e.g., as we would be used to in parametric models by inspecting the confidence intervals for parameter estimates.
 However, a toolkit for assessing the stability of trees based on resampling is now provided by the \pkg{stablelearner} package \citep{PhiZeiStr:2016}.
 
