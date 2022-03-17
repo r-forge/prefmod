@@ -1,6 +1,10 @@
 Changes in Version 0.16-0
 
-  o New pltree() functionality.
+  o New functions pltree() and gpcmtree() with corresponding visualization functions
+    for model-based recursive partitioning of parametric logistic IRT models
+    (2PL, 3PL, 3PLu, 4PL, Rasch/1PL) and the generalized partial credit model, 
+    respectively. The output of these functions might still change slightly in
+    future versions.
 
 
 Changes in Version 0.15-4
