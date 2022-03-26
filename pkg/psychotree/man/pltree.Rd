@@ -98,18 +98,20 @@ An object of S3 class \code{"pltree"} inheriting from class \code{"modelparty"}.
   \code{\link{rstree}}, \code{\link{pctree}}, \code{\link{raschtree}}, \code{\link{gpcmtree}}}
 
 \examples{
-#fit a Rasch tree on the SPISA data set
-library(psychotree)
-data("SPISA")
-fit_rasch <- pltree(spisa[,1:9] ~ age + gender + semester + elite + spon, 
-                    data = SPISA, type = "Rasch")
+o <- options(digits = 4)
 
-#print the Rasch tree
-fit_rasch
+# fit a Rasch (1PL) tree on the SPISA data set
+library("psychotree")
+data("SPISA", package = "psychotree")
+plt <- pltree(spisa[, 1:9] ~ age + gender + semester + elite + spon, 
+  data = SPISA, type = "Rasch")
+plt
 
-#plot the Rasch tree
-plot(fit_rasch)
+# visualize
+plot(plt)
 
-#compute summaries of the models fitted in nodes 1 and 2
-summary(fit_rasch, 1:2)
+# compute summaries of the models fitted in nodes 1 and 2
+summary(plt, 1:2)
+
+options(digits = o$digits)
 }
