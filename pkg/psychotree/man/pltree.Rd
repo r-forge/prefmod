@@ -97,7 +97,7 @@ marginal maximum likelihood (MML) via the standard EM algorithm. The latter allo
 of multiple-group model to capture group impact on the ability distributions.
 
 Various methods are provided for \code{"pltree"} objects, most of them inherit their behavior from
-\code{"modelparty"} objects (e.g., \code{print}, \code{summary}). Additionally, dedicated estractor
+\code{"modelparty"} objects (e.g., \code{print}, \code{summary}). Additionally, dedicated extractor
 functions or provided for the different groups of model parameters in each node of the tree: 
 \code{\link[psychotools]{itempar}} (item parameters),
 \code{\link[psychotools]{threshpar}} (threshold parameters),

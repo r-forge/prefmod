@@ -1,8 +1,13 @@
 \name{node_regionplot}
-
 \alias{node_regionplot}
 
 \title{Panel-Generating Function for Visualizing IRT Tree Models}
+
+\description{
+  Panel-generating function for visualizing the regions of expected
+  item responses across abilities (via shaded rectangles) based on
+  the parameters from the nodes in IRT tree models.
+}
 
 \usage{
 node_regionplot(
@@ -69,9 +74,7 @@ horizontal line (only if \code{type} is set to \code{"mode"}).}
 
 \value{
 A panel function which can be supplied to the \code{plot} method for \code{"pltree"} objects
- or \code{"mob"} objects fitted by \code{\link[psychotree]{pltree}}.
+or \code{"mob"} objects fitted by \code{\link[psychotree]{pltree}}.
 }
 
-\description{
-Panel-Generating Function for Visualizing IRT Tree Models
-}
+\keyword{hplot}

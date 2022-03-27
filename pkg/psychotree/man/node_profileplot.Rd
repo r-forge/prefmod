@@ -1,8 +1,12 @@
 \name{node_profileplot}
-
 \alias{node_profileplot}
 
 \title{Panel-Generating Function for Visualizing IRT Tree Models}
+
+\description{
+  Panel-generating function for visualizing profiles (points and lines)
+  of the parameters from the nodes in IRT tree models.
+}
 
 \usage{
 node_profileplot(
@@ -24,7 +28,7 @@ node_profileplot(
   xscale = NULL,
   yscale = NULL,
   ylines = 2,
-  ...
+  \dots
 )
 }
 
@@ -64,15 +68,6 @@ profile lines and reference line, respectively.}
 \item{...}{further arguments currently not used.}
 }
 
-\value{
-A panel function which can be supplied to the \code{plot} method for \code{"pltree"} objects
- or \code{"mob"} objects fitted by \code{\link[psychotree]{pltree}} or \code{\link[psychotree]{gpcmtree}}.
-}
-
-\description{
-Panel-Generating Function for Visualizing IRT Tree Models
-}
-
 \details{
 The panel-generating function \code{node_regionplot} is called by the \code{plot}
 method of \code{"gpcmtree"} object by default and does not have to be called by the user directly.
@@ -80,3 +75,10 @@ See \code{\link[psychotools]{regionplot}} for details and references
 of the drawn region plots and possible values and their meaning for
 the argument \code{type} (taken by \code{node_regionplot}).
 }
+
+\value{
+A panel function which can be supplied to the \code{plot} method for \code{"pltree"} objects
+or \code{"mob"} objects fitted by \code{\link[psychotree]{pltree}} or \code{\link[psychotree]{gpcmtree}}.
+}
+
+\keyword{hplot}
