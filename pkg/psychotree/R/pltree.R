@@ -1,9 +1,9 @@
-## Main function to run tree based DIF global testing for PL models.
-pltree <- function(formula, data, type=c("Rasch", "1PL", "2PL", "3PL", "3PLu", "4PL"),
-                   start = NULL, weights = NULL,
-                   grouppars = FALSE, vcov = TRUE, method = "BFGS", maxit = 500L, reltol = 1e-10,
-                   deriv = "sum", hessian = TRUE, full = TRUE, minsize = NULL, ...){
-
+## tree-based global DIF testing for parametric logistic (PL) models
+pltree <- function(formula, data, type = c("Rasch", "1PL", "2PL", "3PL", "3PLu", "4PL"),
+  start = NULL, weights = NULL,
+  grouppars = FALSE, vcov = TRUE, method = "BFGS", maxit = 500L, reltol = 1e-10,
+  deriv = "sum", hessian = TRUE, full = TRUE, minsize = NULL, ...)
+{
   ## keep call
   cl <- match.call(expand.dots = TRUE)
   
