@@ -6,6 +6,9 @@ Changes in Version 0.16-0
     respectively. The output of these functions might still change slightly in
     future versions.
 
+  o Make sure that the "raschtree" vignette can also be compiled even when the
+    stablelearner package is not available.
+
 
 Changes in Version 0.15-4
 

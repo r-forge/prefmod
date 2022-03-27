@@ -56,12 +56,10 @@ Loading required package: psychotools
     spisa43     spisa44     spisa45 
 -1.49282653  0.23281497 -1.87831571 
 
-> library("stablelearner")
-
-> if (!file.exists("my_first_raschtree_st.Rdata")) {
-+     set.seed(4321)
-+     my_first_raschtree_st <- stabletree(my_first_raschtree, B = 50)
-+      .... [TRUNCATED] 
+> if (require("stablelearner", quietly = TRUE)) {
++     if (!file.exists("my_first_raschtree_st.Rdata")) {
++         set.seed(4321)
++         my_first .... [TRUNCATED] 
 
 > summary(my_first_raschtree_st)
 
@@ -92,4 +90,4 @@ elite    0.02 0 0.02 0
  *** Run successfully completed ***
 > proc.time()
    user  system elapsed 
- 55.873   0.227  56.103 
+ 52.343   0.263  52.605 
