@@ -1,6 +1,6 @@
 
-R version 4.1.2 (2021-11-01) -- "Bird Hippie"
-Copyright (C) 2021 The R Foundation for Statistical Computing
+R version 4.2.0 (2022-04-22) -- "Vigorous Calisthenics"
+Copyright (C) 2022 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -384,6 +384,108 @@ p.value   8.805e-05 0.2925  0.2489
 
 detaching ‘package:strucchange’, ‘package:sandwich’, ‘package:zoo’
 
+> nameEx("npltree")
+> ### * npltree
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: npltree
+> ### Title: Parametric Logisitic (n-PL) IRT Model Trees
+> ### Aliases: npltree print.npltree plot.npltree itempar.npltree
+> ###   threshpar.npltree guesspar.npltree upperpar.npltree
+> 
+> ### ** Examples
+> 
+> o <- options(digits = 4)
+> 
+> # fit a Rasch (1PL) tree on the SPISA data set
+> library("psychotree")
+> data("SPISA", package = "psychotree")
+> nplt <- npltree(spisa[, 1:9] ~ age + gender + semester + elite + spon, 
++   data = SPISA, type = "Rasch")
+> nplt
+PL Tree
+
+Model formula:
+spisa[, 1:9] ~ age + gender + semester + elite + spon
+
+Fitted party:
+[1] root
+|   [2] gender in female
+|   |   [3] age <= 21: n = 153
+|   |       `spisa[, 1:9]`2 `spisa[, 1:9]`3 `spisa[, 1:9]`4 `spisa[, 1:9]`5 `spisa[, 1:9]`6 
+|   |               -0.5380         -0.6611         -2.2553         -1.1041         -0.3135 
+|   |       `spisa[, 1:9]`7 `spisa[, 1:9]`8 `spisa[, 1:9]`9 
+|   |               -1.7846          0.4007          0.5844 
+|   |   [4] age > 21: n = 264
+|   |       `spisa[, 1:9]`2 `spisa[, 1:9]`3 `spisa[, 1:9]`4 `spisa[, 1:9]`5 `spisa[, 1:9]`6 
+|   |               -1.1765         -1.3674         -2.7117         -1.5377         -1.8251 
+|   |       `spisa[, 1:9]`7 `spisa[, 1:9]`8 `spisa[, 1:9]`9 
+|   |               -2.5733         -0.3057         -0.1337 
+|   [5] gender in male: n = 658
+|       `spisa[, 1:9]`2 `spisa[, 1:9]`3 `spisa[, 1:9]`4 `spisa[, 1:9]`5 `spisa[, 1:9]`6 
+|               -0.4169         -0.6400         -2.5050         -1.0763         -1.8594 
+|       `spisa[, 1:9]`7 `spisa[, 1:9]`8 `spisa[, 1:9]`9 
+|               -2.5169         -0.5883         -0.4991 
+
+Number of inner nodes:    2
+Number of terminal nodes: 3
+Number of parameters per node: 8
+Objective function (negative log-likelihood): 3529
+> 
+> # visualize
+> plot(nplt)
+> 
+> # compute summaries of the models fitted in nodes 1 and 2
+> summary(nplt, 1:2)
+$`1`
+
+Rasch model
+
+Difficulty parameters:
+                Estimate Std. Error z value Pr(>|z|)    
+`spisa[, 1:9]`2  -0.6159     0.0997   -6.18  6.6e-10 ***
+`spisa[, 1:9]`3  -0.8202     0.0994   -8.25  < 2e-16 ***
+`spisa[, 1:9]`4  -2.5164     0.1099  -22.90  < 2e-16 ***
+`spisa[, 1:9]`5  -1.1947     0.0996  -12.00  < 2e-16 ***
+`spisa[, 1:9]`6  -1.5974     0.1010  -15.82  < 2e-16 ***
+`spisa[, 1:9]`7  -2.3956     0.1082  -22.15  < 2e-16 ***
+`spisa[, 1:9]`8  -0.3958     0.1005   -3.94  8.2e-05 ***
+`spisa[, 1:9]`9  -0.2846     0.1010   -2.82   0.0048 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Log-likelihood: -3580 (df = 8) 
+Number of iterations in BFGS optimization: 13 
+
+
+$`2`
+
+Rasch model
+
+Difficulty parameters:
+                Estimate Std. Error z value Pr(>|z|)    
+`spisa[, 1:9]`2  -0.9247     0.1641   -5.63  1.8e-08 ***
+`spisa[, 1:9]`3  -1.0909     0.1634   -6.67  2.5e-11 ***
+`spisa[, 1:9]`4  -2.5234     0.1725  -14.63  < 2e-16 ***
+`spisa[, 1:9]`5  -1.3606     0.1631   -8.34  < 2e-16 ***
+`spisa[, 1:9]`6  -1.2642     0.1631   -7.75  9.1e-15 ***
+`spisa[, 1:9]`7  -2.2626     0.1687  -13.42  < 2e-16 ***
+`spisa[, 1:9]`8  -0.0309     0.1757   -0.18     0.86    
+`spisa[, 1:9]`9   0.1452     0.1798    0.81     0.42    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Log-likelihood: -1420 (df = 8) 
+Number of iterations in BFGS optimization: 13 
+
+
+> 
+> options(digits = o$digits)
+> 
+> 
+> 
+> cleanEx()
 > nameEx("pctree")
 > ### * pctree
 > 
@@ -561,109 +663,6 @@ p.value    0.9578 1.746e-05
 
 detaching ‘package:strucchange’, ‘package:sandwich’, ‘package:zoo’
 
-> nameEx("pltree")
-> ### * pltree
-> 
-> flush(stderr()); flush(stdout())
-> 
-> ### Name: pltree
-> ### Title: Main function to run tree based DIF global testing for PL
-> ###   models.
-> ### Aliases: pltree print.pltree plot.pltree itempar.pltree
-> ###   threshpar.pltree guesspar.pltree upperpar.pltree
-> 
-> ### ** Examples
-> 
-> o <- options(digits = 4)
-> 
-> # fit a Rasch (1PL) tree on the SPISA data set
-> library("psychotree")
-> data("SPISA", package = "psychotree")
-> plt <- pltree(spisa[, 1:9] ~ age + gender + semester + elite + spon, 
-+   data = SPISA, type = "Rasch")
-> plt
-PL Tree
-
-Model formula:
-spisa[, 1:9] ~ age + gender + semester + elite + spon
-
-Fitted party:
-[1] root
-|   [2] gender in female
-|   |   [3] age <= 21: n = 153
-|   |       `spisa[, 1:9]`2 `spisa[, 1:9]`3 `spisa[, 1:9]`4 `spisa[, 1:9]`5 `spisa[, 1:9]`6 
-|   |               -0.5380         -0.6611         -2.2553         -1.1041         -0.3135 
-|   |       `spisa[, 1:9]`7 `spisa[, 1:9]`8 `spisa[, 1:9]`9 
-|   |               -1.7846          0.4007          0.5844 
-|   |   [4] age > 21: n = 264
-|   |       `spisa[, 1:9]`2 `spisa[, 1:9]`3 `spisa[, 1:9]`4 `spisa[, 1:9]`5 `spisa[, 1:9]`6 
-|   |               -1.1765         -1.3674         -2.7117         -1.5377         -1.8251 
-|   |       `spisa[, 1:9]`7 `spisa[, 1:9]`8 `spisa[, 1:9]`9 
-|   |               -2.5733         -0.3057         -0.1337 
-|   [5] gender in male: n = 658
-|       `spisa[, 1:9]`2 `spisa[, 1:9]`3 `spisa[, 1:9]`4 `spisa[, 1:9]`5 `spisa[, 1:9]`6 
-|               -0.4169         -0.6400         -2.5050         -1.0763         -1.8594 
-|       `spisa[, 1:9]`7 `spisa[, 1:9]`8 `spisa[, 1:9]`9 
-|               -2.5169         -0.5883         -0.4991 
-
-Number of inner nodes:    2
-Number of terminal nodes: 3
-Number of parameters per node: 8
-Objective function (negative log-likelihood): 3529
-> 
-> # visualize
-> plot(plt)
-> 
-> # compute summaries of the models fitted in nodes 1 and 2
-> summary(plt, 1:2)
-$`1`
-
-Rasch model
-
-Difficulty parameters:
-                Estimate Std. Error z value Pr(>|z|)    
-`spisa[, 1:9]`2  -0.6159     0.0997   -6.18  6.6e-10 ***
-`spisa[, 1:9]`3  -0.8202     0.0994   -8.25  < 2e-16 ***
-`spisa[, 1:9]`4  -2.5164     0.1099  -22.90  < 2e-16 ***
-`spisa[, 1:9]`5  -1.1947     0.0996  -12.00  < 2e-16 ***
-`spisa[, 1:9]`6  -1.5974     0.1010  -15.82  < 2e-16 ***
-`spisa[, 1:9]`7  -2.3956     0.1082  -22.15  < 2e-16 ***
-`spisa[, 1:9]`8  -0.3958     0.1005   -3.94  8.2e-05 ***
-`spisa[, 1:9]`9  -0.2846     0.1010   -2.82   0.0048 ** 
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-Log-likelihood: -3580 (df = 8) 
-Number of iterations in BFGS optimization: 13 
-
-
-$`2`
-
-Rasch model
-
-Difficulty parameters:
-                Estimate Std. Error z value Pr(>|z|)    
-`spisa[, 1:9]`2  -0.9247     0.1641   -5.63  1.8e-08 ***
-`spisa[, 1:9]`3  -1.0909     0.1634   -6.67  2.5e-11 ***
-`spisa[, 1:9]`4  -2.5234     0.1725  -14.63  < 2e-16 ***
-`spisa[, 1:9]`5  -1.3606     0.1631   -8.34  < 2e-16 ***
-`spisa[, 1:9]`6  -1.2642     0.1631   -7.75  9.1e-15 ***
-`spisa[, 1:9]`7  -2.2626     0.1687  -13.42  < 2e-16 ***
-`spisa[, 1:9]`8  -0.0309     0.1757   -0.18     0.86    
-`spisa[, 1:9]`9   0.1452     0.1798    0.81     0.42    
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-Log-likelihood: -1420 (df = 8) 
-Number of iterations in BFGS optimization: 13 
-
-
-> 
-> options(digits = o$digits)
-> 
-> 
-> 
-> cleanEx()
 > nameEx("raschtree")
 > ### * raschtree
 > 
@@ -927,7 +926,7 @@ detaching ‘package:strucchange’, ‘package:sandwich’, ‘package:zoo’
 
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  3.862 0.065 3.932 0 0 
+Time elapsed:  4.035 0.041 4.076 0 0 
 > grDevices::dev.off()
 null device 
           1 

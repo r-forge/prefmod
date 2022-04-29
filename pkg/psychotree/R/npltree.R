@@ -1,5 +1,5 @@
 ## tree-based global DIF testing for parametric logistic (PL) models
-pltree <- function(formula, data, type = c("Rasch", "1PL", "2PL", "3PL", "3PLu", "4PL"),
+npltree <- function(formula, data, type = c("Rasch", "1PL", "2PL", "3PL", "3PLu", "4PL"),
   start = NULL, weights = NULL,
   grouppars = FALSE, vcov = TRUE, method = "BFGS", maxit = 500L, reltol = 1e-10,
   deriv = "sum", hessian = TRUE, full = TRUE, minsize = NULL, ...)
@@ -7,6 +7,8 @@ pltree <- function(formula, data, type = c("Rasch", "1PL", "2PL", "3PL", "3PLu",
   ## keep call
   cl <- match.call(expand.dots = TRUE)
   
+  ## process defaults
+  type <- match.arg(type, c("Rasch", "1PL", "2PL", "3PL", "3PLu", "4PL"))
   if (is.null(minsize) & type == "2PL") {
     minsize <- 300
   }
@@ -40,17 +42,17 @@ pltree <- function(formula, data, type = c("Rasch", "1PL", "2PL", "3PL", "3PLu",
 
   ## extend class and keep original call
   rval$info$call <- cl
-  class(rval) <- c("pltree", class(rval))
+  class(rval) <- c("npltree", class(rval))
   return(rval)
 }
 
 ## methods
 
-print.pltree <- function(x, ...) {
+print.npltree <- function(x, ...) {
   partykit::print.modelparty(x, title = "PL Tree", objfun = "negative log-likelihood", ...)
 }
 
-plot.pltree <- function(x, type = c("profile", "regions"), terminal_panel = NULL,
+plot.npltree <- function(x, type = c("profile", "regions"), terminal_panel = NULL,
                         tp_args = list(...), tnex = 2L, drop_terminal = TRUE, ...)
 {
   if(!is.null(terminal_panel)) {
@@ -64,28 +66,28 @@ plot.pltree <- function(x, type = c("profile", "regions"), terminal_panel = NULL
                             tp_args = tp_args, tnex = tnex, drop_terminal = drop_terminal, ...)
 }
 
-itempar.pltree <- function(object, node = NULL, ...) {
+itempar.npltree <- function(object, node = NULL, ...) {
   if (is.null(node))
     node <- partykit::nodeids(object, terminal = TRUE)
   cf <- apply_to_models(object, node = node, FUN = function(n) psychotools::itempar(n, ...))
   cf
 }
 
-threshpar.pltree <- function(object, node = NULL, ...) {
+threshpar.npltree <- function(object, node = NULL, ...) {
   if (is.null(node))
     node <- partykit::nodeids(object, terminal = TRUE)
   cf <- apply_to_models(object, node = node, FUN = function(n) psychotools::threshpar(n, ...))
   cf
 }
 
-guesspar.pltree <- function(object, node = NULL, ...) {
+guesspar.npltree <- function(object, node = NULL, ...) {
   if (is.null(node))
     node <- partykit::nodeids(object, terminal = TRUE)
   cf <- apply_to_models(object, node = node, FUN = function(n) psychotools::guesspar(n, ...))
   cf
 }
 
-upperpar.pltree <- function(object, node = NULL, ...) {
+upperpar.npltree <- function(object, node = NULL, ...) {
   if (is.null(node))
     node <- partykit::nodeids(object, terminal = TRUE)
   cf <- apply_to_models(object, node = node, FUN = function(n) psychotools::upperpar(n, ...))

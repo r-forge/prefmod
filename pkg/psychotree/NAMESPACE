@@ -22,7 +22,7 @@ export(
   "pctree",
   "bttree",
   "mpttree",
-  "pltree",
+  "npltree",
   "gpcmtree",
 
   ## panel-generating visualization functions
@@ -63,13 +63,13 @@ S3method("coef", "mpttree")
 S3method("plot", "mpttree")
 S3method("print", "mpttree")
 
-## methods for pltree objects
-S3method("plot", "pltree")
-S3method("print", "pltree")
-S3method("itempar", "pltree")
-S3method("threshpar", "pltree")
-S3method("guesspar", "pltree")
-S3method("upperpar", "pltree")
+## methods for npltree objects
+S3method("plot", "npltree")
+S3method("print", "npltree")
+S3method("itempar", "npltree")
+S3method("threshpar", "npltree")
+S3method("guesspar", "npltree")
+S3method("upperpar", "npltree")
 
 ## methods for gpcmtree objects
 S3method("plot", "gpcmtree")

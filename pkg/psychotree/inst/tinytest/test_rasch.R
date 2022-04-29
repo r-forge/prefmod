@@ -1,11 +1,11 @@
-### Check pltree with rasch model on the SPISA dataset ###
+### Check npltree with rasch model on the SPISA dataset ###
 
 ## load data and fit model ##
 data("SPISA", package = "psychotree")
-fit_rasch <- pltree(spisa ~ age + gender + semester + elite + spon, data = SPISA, type = "Rasch")
+fit_rasch <- npltree(spisa ~ age + gender + semester + elite + spon, data = SPISA, type = "Rasch")
 
 ## check that a warning is emitted if impact factors are used with CML estimation
-expect_warning(pltree(spisa ~ age + gender + semester + elite + spon | gender, data = SPISA, type = "Rasch"))
+expect_warning(npltree(spisa ~ age + gender + semester + elite + spon | gender, data = SPISA, type = "Rasch"))
 
 ## test methods
 expect_equal(coef(fit_rasch), readRDS("test_rasch.rds")[[1]],

@@ -29,8 +29,8 @@ node_regionplot(
 }
 
 \arguments{
-\item{mobobj}{an object of class \code{"pltree"} or class \code{"mob"}
-fitted by \code{\link[psychotree]{pltree}}}
+\item{mobobj}{an object of class \code{"npltree"} or class \code{"mob"}
+fitted by \code{\link[psychotree]{npltree}}}
 
 \item{names}{logical or character. If \code{TRUE}, the names of the items are displayed
 on the x-axis. If \code{FALSE}, numbers of items are shown.
@@ -73,8 +73,8 @@ horizontal line (only if \code{type} is set to \code{"mode"}).}
 }
 
 \value{
-A panel function which can be supplied to the \code{plot} method for \code{"pltree"} objects
-or \code{"mob"} objects fitted by \code{\link[psychotree]{pltree}}.
+A panel function which can be supplied to the \code{plot} method for \code{"npltree"} objects
+or \code{"mob"} objects fitted by \code{\link[psychotree]{npltree}}.
 }
 
 \keyword{hplot}

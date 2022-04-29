@@ -62,8 +62,6 @@ gpcmtree(formula, data, weights = NULL,
 
 \item{x}{an object of class \code{gpcmtree}.}
 
-\item{title, objfun}{arguments passed to \code{\link[partykit]{mob}}.}
-
 \item{type}{character specifying the type of plot.}
 
 \item{terminal_panel, tp_args, tnex, drop_terminal}{arguments passed to \code{\link[partykit]{mob}}.}
@@ -88,4 +86,4 @@ An object of S3 class \code{"gpcmtree"} inheriting from class \code{"modelparty"
 }
 
 \seealso{\code{\link[partykit]{mob}}, \code{\link[psychotools]{plmodel}},
-  \code{\link{rstree}}, \code{\link{pctree}}, \code{\link{raschtree}}, \code{\link{pltree}}}
+  \code{\link{rstree}}, \code{\link{pctree}}, \code{\link{raschtree}}, \code{\link{npltree}}}

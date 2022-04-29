@@ -33,8 +33,8 @@ node_profileplot(
 }
 
 \arguments{
-\item{mobobj}{an object of class \code{"pltree"} or class \code{"mob"}
-fitted by \code{\link[psychotree]{pltree}}}
+\item{mobobj}{an object of class \code{"npltree"} or class \code{"mob"}
+fitted by \code{\link[psychotree]{npltree}}}
 
 \item{what}{specifying the type of parameters to be plotted}
 
@@ -77,8 +77,8 @@ the argument \code{type} (taken by \code{node_regionplot}).
 }
 
 \value{
-A panel function which can be supplied to the \code{plot} method for \code{"pltree"} objects
-or \code{"mob"} objects fitted by \code{\link[psychotree]{pltree}} or \code{\link[psychotree]{gpcmtree}}.
+A panel function which can be supplied to the \code{plot} method for \code{"npltree"} objects
+or \code{"mob"} objects fitted by \code{\link[psychotree]{npltree}} or \code{\link[psychotree]{gpcmtree}}.
 }
 
 \keyword{hplot}

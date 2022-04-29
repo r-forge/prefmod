@@ -1,8 +1,8 @@
-### Check pltree with 2PL model on the SPISA dataset ###
+### Check npltree with 2PL model on the SPISA dataset ###
 
 ## load data and fit model ##
 data("SPISA", package = "psychotree")
-fit_2PL <- pltree(spisa[,1:9] ~ age + gender, data = SPISA, type = "2PL", maxit = 5000)
+fit_2PL <- npltree(spisa[,1:9] ~ age + gender, data = SPISA, type = "2PL", maxit = 5000)
 
 ## test methods
 expect_equal(coef(fit_2PL), readRDS("test_2PL.rds")[[1]],
@@ -17,11 +17,11 @@ expect_equal(upperpar(fit_2PL), readRDS("test_2PL.rds")[[5]],
              tolerance = 0.0001)
 
 
-### Check pltree with 2PL model and an impact factor on the SPISA dataset ###
+### Check npltree with 2PL model and an impact factor on the SPISA dataset ###
 
 ## load data and fit model ##
 data("SPISA", package = "psychotree")
-fit_2PL_mg <- pltree(spisa[,1:9] ~ gender | age + gender, data = SPISA, type = "2PL", maxit = 5000)
+fit_2PL_mg <- npltree(spisa[,1:9] ~ gender | age + gender, data = SPISA, type = "2PL", maxit = 5000)
 
 ## test methods
 expect_equal(coef(fit_2PL_mg), readRDS("test_2PL_mg.rds")[[1]],

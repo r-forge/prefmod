@@ -1,4 +1,4 @@
-### Check pltree with GPCM model on a simulated dataset ###
+### Check npltree with GPCM model on a simulated dataset ###
 
 ## simulate data and save it (don't run)##
 # set.seed(42)
@@ -41,7 +41,7 @@ expect_equal(guesspar(fit_GPCM), readRDS("test_GPCM.rds")[[4]],
 expect_equal(upperpar(fit_GPCM), readRDS("test_GPCM.rds")[[5]],
              tolerance = 0.0001)
 
-### Check pltree with GPCM and an impact factor on the simulated dataset ###
+### Check npltree with GPCM and an impact factor on the simulated dataset ###
 ## fit model ##
 fit_GPCM_mg <- gpcmtree(response ~ fac1 | . , data=simdata)
 

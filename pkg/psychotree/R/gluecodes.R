@@ -1,4 +1,4 @@
-## generator function yielding glue code, calling raschmodel, plmodel, gpcmodel, or rsmodel
+## generator function yielding glue code, calling raschmodel, nplmodel, gpcmodel, or rsmodel
 ## (analogous to raschfit, rsmfit, pcmfit, and mptfit)
 generate_irtfit <- function(start = NULL, weights = NULL, estfun = FALSE, object = FALSE,
   itemtype = c("Rasch", "2PL", "3PL", "3PLu", "4PL", "1PL", "RM", "GPCM", "PCM", "RSM"),
@@ -17,7 +17,7 @@ generate_irtfit <- function(start = NULL, weights = NULL, estfun = FALSE, object
     method = curr_call$method, maxit = curr_call$maxit, reltol = curr_call$reltol,
     deriv = curr_call$deriv, hessian = curr_call$hessian, full = curr_call$full)
   {
-    # copy environment to pass arguments to plmodel
+    # copy environment to pass arguments to nplmodel
     curr_env <- environment()
     # calls for if we have a Rasch model to be estimated with CML
     if(curr_env$itemtype %in% c("Rasch")){
@@ -30,12 +30,12 @@ generate_irtfit <- function(start = NULL, weights = NULL, estfun = FALSE, object
     } else if (curr_env$itemtype %in% c("2PL", "3PL", "3PLu", "4PL", "1PL", "RM")) {
       # if we dont have any impact set impact as NULL
       if((is.null(x) || NCOL(x) == 0L || length(unique(interaction(x))) == 1)) {
-        rval <- psychotools::plmodel(y, weights = curr_env$weights, impact = NULL,
+        rval <- psychotools::nplmodel(y, weights = curr_env$weights, impact = NULL,
                         type = curr_env$itemtype, grouppars = curr_env$grouppars, vcov = curr_env$vcov,
                         start = curr_env$start, method = curr_env$method, maxit = curr_env$maxit, reltol = curr_env$reltol)
       # else, set impact at interactions(x)
       } else {
-        rval <- psychotools::plmodel(y, weights = curr_env$weights, impact = interaction(x),
+        rval <- psychotools::nplmodel(y, weights = curr_env$weights, impact = interaction(x),
                         type = curr_env$itemtype, grouppars = curr_env$grouppars, vcov = curr_env$vcov,
                         start = curr_env$start, method = curr_env$method, maxit = curr_env$maxit, reltol = curr_env$reltol)
       }
@@ -82,7 +82,7 @@ generate_irtfit <- function(start = NULL, weights = NULL, estfun = FALSE, object
         if (curr_env$itemtype %in% c("Rasch")) {
           psychotools::estfun.raschmodel(rval)
         } else if (curr_env$itemtype %in% c("2PL", "3PL", "3PLu", "4PL", "1PL", "RM")) {
-          psychotools::estfun.plmodel(rval)
+          psychotools::estfun.nplmodel(rval)
         } else if(curr_env$itemtype %in% c("GPCM", "PCM")){
           psychotools::estfun.gpcmodel(rval)
         } else if(curr_env$itemtype %in% c("RSM")){
