@@ -18,7 +18,7 @@ rstree <- function(formula, data, na.action,
   m$control <- control
   for(n in names(rsmcontrol)) if(!is.null(rsmcontrol[[n]])) m[[n]] <- rsmcontrol[[n]]
   if("..." %in% names(m)) m[["..."]] <- NULL
-  m[[1L]] <- as.name("mob")
+  m[[1L]] <- as.call(quote(partykit::mob))
   rval <- eval(m, parent.frame())
   
   ## extend class and keep original call

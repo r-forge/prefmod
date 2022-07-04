@@ -37,7 +37,7 @@ npltree <- function(formula, data, type = c("Rasch", "1PL", "2PL", "3PL", "3PLu"
     if(!is.null(plcontrol[[n]])) m[[n]] <- plcontrol[[n]]
   }
   if("..." %in% names(m)) m[["..."]] <- NULL
-  m[[1L]] <- as.name("mob")
+  m[[1L]] <- as.call(quote(partykit::mob))
   rval <- eval(m, parent.frame())
 
   ## extend class and keep original call

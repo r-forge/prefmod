@@ -17,7 +17,7 @@ bttree <- function(formula, data, na.action, cluster,
   m$control <- control
   for(n in names(btcontrol)) if(!is.null(btcontrol[[n]])) m[[n]] <- btcontrol[[n]]
   if("..." %in% names(m)) m[["..."]] <- NULL
-  m[[1L]] <- as.name("mob")
+  m[[1L]] <- as.call(quote(partykit::mob))
   rval <- eval(m, parent.frame())
   
   ## extend class and keep original call

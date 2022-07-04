@@ -21,7 +21,7 @@ mpttree <- function(formula, data, na.action, cluster,
   for(n in names(mptcontrol))
     if(!is.null(mptcontrol[[n]])) m[[n]] <- mptcontrol[[n]]
   if("..." %in% names(m)) m[["..."]] <- NULL
-  m[[1L]] <- as.name("mob")
+  m[[1L]] <- as.call(quote(partykit::mob))
   rval <- eval(m, parent.frame())
   
   ## extend class and keep original call

@@ -18,7 +18,7 @@ pctree <- function (formula, data, na.action, nullcats = c("keep", "downcode", "
   m$control <- control
   for(n in names(pcmcontrol)) if(!is.null(pcmcontrol[[n]])) m[[n]] <- pcmcontrol[[n]]
   if("..." %in% names(m)) m[["..."]] <- NULL
-  m[[1L]] <- as.name("mob")
+  m[[1L]] <- as.call(quote(partykit::mob))
   rval <- eval(m, parent.frame())
   
   ## extend class and keep original call

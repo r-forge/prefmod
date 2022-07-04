@@ -18,7 +18,7 @@ raschtree <- function(formula, data, na.action,
   m$control <- control
   for(n in names(raschcontrol)) if(!is.null(raschcontrol[[n]])) m[[n]] <- raschcontrol[[n]]
   if("..." %in% names(m)) m[["..."]] <- NULL
-  m[[1L]] <- as.name("mob")
+  m[[1L]] <- as.call(quote(partykit::mob))
   rval <- eval(m, parent.frame())
   
   ## extend class and keep original call

@@ -1,3 +1,9 @@
+Changes in Version 0.16-1
+
+  o Make sure that mob() from "partykit" (rather than "party") is called by all
+    tree functions.
+
+
 Changes in Version 0.16-0
 
   o New functions npltree() and gpcmtree() with corresponding visualization functions
