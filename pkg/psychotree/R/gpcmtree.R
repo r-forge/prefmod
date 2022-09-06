@@ -1,13 +1,13 @@
 # Main function to run tree based DIF global testing for GPCM models
 gpcmtree <- function(formula, data,
                      weights = NULL, grouppars = FALSE, vcov = TRUE, nullcats = "downcode",
-                     start = NULL, method = "BFGS", maxit = 500L, reltol = 1e-10, minsize = 500, ...){
+                     start = NULL, method = "BFGS", maxit = 500L, reltol = 1e-10, minsize = 500L, ...){
 
   ## keep call
   cl <- match.call(expand.dots = TRUE)
 
   ## use dots for setting up mob_control
-  control <- partykit::mob_control(...)
+  control <- partykit::mob_control(minsize = minsize, ...)
   control$xtype <- "data.frame"
   control$ytype <- "matrix"
   plcontrol <- list()

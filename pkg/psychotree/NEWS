@@ -2,6 +2,9 @@ Changes in Version 0.16-1
 
   o Make sure that mob() from "partykit" (rather than "party") is called by all
     tree functions.
+    
+  o In previous versions the gpcmtree(..., minsize = ...) argument was ignored.
+    Now it is passed on correctly to mob_control().
 
 
 Changes in Version 0.16-0
