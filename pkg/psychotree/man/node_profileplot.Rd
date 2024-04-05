@@ -11,7 +11,7 @@
 \usage{
 node_profileplot(
   mobobj,
-  what = c("items", "thresholds", "discriminations"),
+  what = c("item", "coef", "threshold", "discrimination", "guessing", "upper"),
   parg = list(type = NULL, ref = NULL, alias = TRUE),
   id = TRUE,
   names = FALSE,
