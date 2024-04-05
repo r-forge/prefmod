@@ -12,7 +12,7 @@
 node_profileplot(
   mobobj,
   what = c("item", "coef", "threshold", "discrimination", "guessing", "upper"),
-  parg = list(type = NULL, ref = NULL, alias = TRUE),
+  parg = list(type = NULL, ref = NULL, alias = TRUE, logit = FALSE),
   id = TRUE,
   names = FALSE,
   abbreviate = TRUE,
