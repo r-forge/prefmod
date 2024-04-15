@@ -23,7 +23,7 @@ A data frame containing 3584 observations on 10 variables.
   \item{occupation}{Factor. What is/was your main job?}
   \item{income}{Ordered factor. Income of household in ten categories from
     10 percent lowest to 10 percent highest income category.}
-  \item{paircomp}{Paired comparison of class \code{\link{paircomp}}.
+  \item{paircomp}{Paired comparison of class \code{\link[psychotools]{paircomp}}.
     Five pairwise choices among four important political goals derived from
     a double-choice task (see Details).}
   \item{country2}{Factor. Country group according to postmaterialism
@@ -73,7 +73,7 @@ A data frame containing 3584 observations on 10 variables.
   \emph{Sociological Methodology}, \bold{33}, 213--239.
 }
 
-\seealso{\code{\link{paircomp}}}
+\seealso{\code{\link[psychotools]{paircomp}}}
 
 \examples{
 ## data

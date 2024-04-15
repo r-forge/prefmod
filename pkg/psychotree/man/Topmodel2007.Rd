@@ -14,7 +14,7 @@
 \format{
 A data frame containing 192 observations on 6 variables.
 \describe{
-  \item{preference}{Paired comparison of class \code{\link{paircomp}}.
+  \item{preference}{Paired comparison of class \code{\link[psychotools]{paircomp}}.
     Preferences for all 15 paired comparisons from 6 contestants:
     Barbara, Anni, Hana, Fiona, Mandy, and Anja.}
   \item{gender}{Factor coding gender.}
@@ -57,7 +57,7 @@ A data frame containing 192 observations on 6 variables.
   \url{https://en.wikipedia.org/wiki/Germany's_Next_Topmodel}, accessed 2009-02-06.
 }
 
-\seealso{\code{\link{paircomp}}}
+\seealso{\code{\link[psychotools]{paircomp}}}
 
 \examples{
 data("Topmodel2007", package = "psychotree")

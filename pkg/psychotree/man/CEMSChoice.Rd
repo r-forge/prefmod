@@ -13,7 +13,7 @@
 \format{
 A data frame containing 303 observations on 10 variables.
 \describe{
-  \item{preference}{Paired comparison of class \code{\link{paircomp}}.
+  \item{preference}{Paired comparison of class \code{\link[psychotools]{paircomp}}.
     Preferences for all 15 paired comparisons from 6 objects:
     London, Paris, Milano, St. Gallen, Barcelona, Stockholm.}
   \item{study}{Factor coding main discipline of study: commerce,
@@ -25,7 +25,7 @@ A data frame containing 303 observations on 10 variables.
   \item{work}{Factor. Was the student working full-time while studying?}
   \item{gender}{Factor coding gender.}
   \item{intdegree}{Factor. Does the student intend to take an international degree?}
-  \item{preference1998}{Paired comparison of class \code{\link{paircomp}}.
+  \item{preference1998}{Paired comparison of class \code{\link[psychotools]{paircomp}}.
     This is like \code{preference} but the comparisons between Barcelona
     an Stockholm are (erroneously) reversed, see below.}
 }
@@ -70,7 +70,7 @@ Dittrich R, Hatzinger R, Katzenbeisser W (2001).
   \emph{Journal of the Royal Statistical Society C}, \bold{50}, 247--249.
 }
 
-\seealso{\code{\link{paircomp}}}
+\seealso{\code{\link[psychotools]{paircomp}}}
 
 \examples{
 data("CEMSChoice", package = "psychotree")
