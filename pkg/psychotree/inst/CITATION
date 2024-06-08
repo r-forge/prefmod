@@ -65,6 +65,7 @@ bibentry(bibtype = "Book",
   year         = "2010",
   publisher    = "VS Verlag",
   address      = "Wiesbaden",
+  doi          = "10.1007/978-3-531-92543-1",
   
   header       = "If you use the SPIEGEL Studentenpisa data subsample (SPISA) please cite:"
 )

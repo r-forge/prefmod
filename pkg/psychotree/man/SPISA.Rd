@@ -161,8 +161,8 @@ SPIEGEL Online (2009). Studentenpisa -- Alle Fragen, alle Antworten.
   \url{https://www.spiegel.de/lebenundlernen/uni/studentenpisa-alle-fragen-alle-antworten-a-620101.html}
   
 Trepte S, Verbeet M (2010). Allgemeinbildung in Deutschland --
-  Erkenntnisse aus dem SPIEGEL-Studentenpisa-Test.
-  ISBN 978-3-531-17218-7. VS Verlag, Wiesbaden.
+  Erkenntnisse aus dem SPIEGEL-Studentenpisa-Test. VS Verlag, Wiesbaden.
+  \doi{10.1007/978-3-531-92543-1}
 }
 
 \seealso{\code{\link{raschtree}}}
