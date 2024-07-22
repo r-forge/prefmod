@@ -61,6 +61,9 @@ raschtree(formula, data, na.action,
   Rasch trees are an application of model-based recursive partitioning
   (implemented in \code{\link[partykit]{mob}}) to Rasch models
   (implemented in \code{\link[psychotools]{raschmodel}}).
+  See Strobl et al. (2015) for a detailed discussion. For technical and
+  algorithmic details, see the documentation of the two core functions
+  linked above as well as \code{vignette("mob", package = "partykit")}.
   
   Various methods are provided for \code{"raschtree"} objects, most of them
   inherit their behavior from \code{"modelparty"} objects (e.g., \code{print}, \code{summary},
