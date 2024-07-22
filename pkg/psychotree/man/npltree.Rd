@@ -88,6 +88,9 @@ model is estimated by conditional maximum likelihood (CML) all other n-PL models
 marginal maximum likelihood (MML) via the standard EM algorithm. The latter allow the specification
 of multiple-group model to capture group impact on the ability distributions.
 
+For technical and algorithmic details, see the documentation of the core functions
+linked above as well as \code{vignette("mob", package = "partykit")}.
+
 Various methods are provided for \code{"npltree"} objects, most of them inherit their behavior from
 \code{"modelparty"} objects (e.g., \code{print}, \code{summary}). Additionally, dedicated extractor
 functions or provided for the different groups of model parameters in each node of the tree: 

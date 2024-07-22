@@ -42,6 +42,9 @@ mpttree(formula, data, na.action, cluster, spec, treeid = NULL,
   model-based recursive partitioning (implemented in
   \code{\link[partykit]{mob}}) to MPT models (implemented in
   \code{\link[psychotools]{mptmodel}}).
+  See Wickelmaier & Zeileis (2018) for a detailed discussion. For technical and
+  algorithmic details, see the documentation of the two core functions
+  linked above as well as \code{vignette("mob", package = "partykit")}.
   
   Various methods are provided for \code{"mpttree"} objects, most of them
   inherit their behavior from \code{"mob"} objects (e.g., \code{print},

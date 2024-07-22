@@ -52,6 +52,8 @@ bttree(formula, data, na.action, cluster,
   Details about the underlying theory and further explanations of the
   illustrations in the example section can be found in
   Strobl, Wickelmaier, Zeileis (2011).
+  For technical and algorithmic details, see the documentation of the two core
+  functions linked above as well as \code{vignette("mob", package = "partykit")}.
   
   Various methods are provided for \code{"bttree"} objects, most of them
   inherit their behavior from \code{"mob"} objects (e.g., \code{print}, \code{summary},

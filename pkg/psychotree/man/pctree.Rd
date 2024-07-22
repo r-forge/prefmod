@@ -65,6 +65,9 @@ pctree(formula, data, na.action, nullcats = c("keep", "downcode", "ignore"),
   Partial credit trees are an application of model-based recursive partitioning
   (implemented in \code{\link[partykit]{mob}}) to partial credit models
   (implemented in \code{\link[psychotools]{pcmodel}}).
+  See Komboz et al. (2018) for a detailed discussion. For technical and
+  algorithmic details, see the documentation of the two core functions
+  linked above as well as \code{vignette("mob", package = "partykit")}.
   
   Various methods are provided for \code{"pctree"} objects, most of them
   inherit their behavior from \code{"modelparty"} objects (e.g., \code{print}, \code{summary},

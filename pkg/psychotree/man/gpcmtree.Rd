@@ -71,6 +71,8 @@ gpcmtree(formula, data, weights = NULL,
 \details{
 Generalized partial credit model (GPCM) trees are an application of model-based recursive partitioning
 (implemented in \code{\link[partykit]{mob}}) to GPCM models (implemented in \code{\link[psychotools]{gpcmodel}}).
+For technical and algorithmic details, see the documentation of the two core functions
+linked above as well as \code{vignette("mob", package = "partykit")}.
 
 Various methods are provided for \code{"gpcmtree"} objects, most of them inherit their behavior from
 \code{"modelparty"} objects (e.g., \code{print}, \code{summary}). Additionally, dedicated extractor
